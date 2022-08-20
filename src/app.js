@@ -28,6 +28,8 @@ app.use("/api/users",userRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-
+app.get('/',(req,res) => {
+    res.json({msg:'Welcome to the ExpanseTracker'});
+})
 
 module.exports = app;
