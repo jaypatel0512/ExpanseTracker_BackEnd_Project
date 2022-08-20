@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
 
-const incomeSchema = mongoose.Schema(
+const expanseSchema = mongoose.Schema(
     {
       title: {
         required: [true, "Title is required"],
@@ -13,7 +13,7 @@ const incomeSchema = mongoose.Schema(
       },
       type: {
         type: String,
-        default: "income",
+        default: "expanse",
       },
       amount: {
         required: [true, "Amount name is required"],
@@ -31,8 +31,9 @@ const incomeSchema = mongoose.Schema(
   );
 
   //pagination
-  incomeSchema.plugin(mongoosePaginate) 
+  expanseSchema.plugin(mongoosePaginate) 
 
-  const Income = mongoose.model("Income", incomeSchema);
 
-  module.exports = Income;
+  const Expanse = mongoose.model("Expanse", expanseSchema);
+
+  module.exports = Expanse;

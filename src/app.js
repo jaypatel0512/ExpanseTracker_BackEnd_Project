@@ -3,6 +3,8 @@ const dotenv = require ("dotenv");
 const dbConnect = require("./config/dbConnect");
 const {errorHandler, notFound} = require("./middleware/errorMiddleware");
 const userRoutes = require("./routes/users/userRoutes");
+const incomeRoutes = require("./routes/income/incomeRoutes");
+const expanseRoutes = require("./routes/expanses/expanseRoutes");
 
 
 const app = express();
@@ -21,8 +23,14 @@ dbConnect();
 //middleware
 app.use(express.json());
 
-//routes
+//users routes
 app.use("/api/users",userRoutes);
+
+//income routes
+app.use("/api/income",incomeRoutes);
+
+//expnase routes
+app.use("/api/expanse",expanseRoutes);
 
 //errorHandler
 app.use(notFound);
