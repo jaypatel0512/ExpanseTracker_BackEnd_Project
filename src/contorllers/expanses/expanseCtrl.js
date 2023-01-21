@@ -4,14 +4,14 @@ const Expanse = require("../../model/Expanse");
 //create
 
 const createExpCtrl = expressAsyncHandler(async (req, res) => {
-  const { title, amount, description, user } = req.body;
+  const { title, amount, description } = req.body;
 
   try {
     const expanse = await Expanse.create({
       title,
       amount,
       description,
-      user,
+      user:req?.user?._id,
     });
     res.json(expanse);
   } catch (error) {
@@ -32,6 +32,17 @@ const fetchAllExpCtrl = expressAsyncHandler(async (req, res) => {
     res.json(error);
   }
 });
+
+// const fetchExpByUser = expressAsyncHandler(async (req, res) => {
+ 
+//   try {
+//     const expanse = await Expanse.find({user: req.user.id});
+    
+//     res.json(expanse);
+//   } catch (error) {
+//     res.json(error);
+//   }
+// });
 
 //fetch single expanse
 const fetchExpDetailCtrl = expressAsyncHandler(async (req, res) => {
